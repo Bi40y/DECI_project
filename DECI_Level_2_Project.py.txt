@@ -1,0 +1,179 @@
+import random
+import time
+def printt(text):
+    time.sleep(2)
+    print(text)
+printt("Life is not so easy")
+printt("In this world, even real men can't live")
+printt("You need to be a dragon!")
+printt("Loading... ")
+printt("Loading... ToT")
+printt("Loading... --")
+printt("During Bombarding The QUANTUMIC BOMB that had been devolped by your Uncle Dr. Livesi Through WWIIII ")
+printt("The bomb Change in your genetic material making it so close to your uncle")
+printt("the police had took u thinkink you are Dr. Livesi")
+printt("becuase of the huge similarity between your and his DNA code")
+printt("Not typical, but they thought may the bomb change the code")
+printt("The QANTUMIC BOMB effect has continue since the war...")
+printt("Where it corrode the earth by a speed of 1.58km/h")
+printt("So they want you to stop it..")
+printt("but on the other you were from elite of scintists who went to live in mars")
+printt("after this gentic changes you mustn't lose more than 1L (1000ml) of your blood")
+printt("otherwise you will die")
+printt("3.. 2.. 1.. the rocket is landing...")
+
+def new_game():
+    global play
+    play_again = input(printt("Do you want to play a new game? Answer by Yes or No. ")).lower()
+    if play_again == "yes":
+        play = True
+    elif play_again == "no":
+        play = False
+    else:
+        printt("Please answer by yes or no.")
+        new_game()
+
+def continue_mining():
+    cont = input(printt("Do you accept to be a worker? Answer by Yes or No. ")).lower()
+    if cont == "yes":
+        printt("You now work in mining")
+        printt("Your work is very hard")
+        printt("But at least they will allow you to live!")
+        printt("In other words, you won!!")
+    elif cont == "no":
+        printt("They killed you as they want to save food!")
+        printt("You lost!")
+        global blood
+        blood = -1001
+        
+def question1():
+    global blood
+    honesty = input(printt("Do you want to tell them the truth? Answer by Yes or No. ")).lower()
+    if honesty == "yes":
+        printt("You said you are a nephew of Dr. Livesi but not him")
+        printt("They make you work in mining")
+        continue_mining()
+    elif honesty == "no":
+        printt("They killed you as they thought you might be a spy")
+        printt("You lost!")
+        blood -= blood_list2[random.randint(0, 2)]
+    else:
+        printt("Please answer by yes or no.")
+        question1()
+        
+def cow_bar_hit():
+    global blood
+    printt("They took you to a dark room")
+    printt("Oops, your head is hit by a crowbar...")
+    blood -= blood_list3[random.randint(0, 2)]
+    printt(f"You have to take care of your blood. {blood} left!")
+    printt("Three days later, you awake and find an officer asking about your identity,")
+    question1()
+
+def l1():
+    a1 = "So, who are you?"
+    b1 = "Take him to interrogation!"
+    list1 = [a1, b1]
+    response1 = list1[random.randint(0, 1)]
+    printt(response1)
+    if response1 == b1:
+        cow_bar_hit()
+    elif response1 == a1:
+        printt("You tried to lie...")
+        printt(b1)
+        cow_bar_hit()
+
+def diary_func():
+    global blood        
+    where_seek = input(printt("Where do you want to go? The old rocket(1) or science library(2)? "))
+    if where_seek == "1":
+        printt("You didn't find anything there")
+        printt("And a piece of the rocket fell on your head")
+        blood -= blood_list3[random.randint(0, 2)]
+        printt(f"your blood is {blood}")
+    elif where_seek == "2":
+        printt("You didn't find anything there")
+        printt("But the manager of the library said:")
+        printt("'You can learn more with the leader'")
+        printt("So you went to the leader")
+        printt("The leader is a friendly man and anyone can meet him")
+        printt("You asked him about any research papers he has")
+        printt("He gave you a box of old papers")
+        printt("You found two papers written by your uncle")
+        printt("Which instruct you to find a solution")
+        time.sleep(3)
+        printt("You found a solution and saved the rest of the earth!")
+        printt("Congratulations! You won!")
+    else:
+        printt("Please write (1) or (2)!")
+        diary_func()        
+
+def study_more_func():
+    global blood
+    global printt
+    study_more = input(printt("Do you want to study for 5 more years? Answer by Yes or No. ")).lower()
+    if study_more == "yes":
+        printt("You bombed a small bomb during testing")
+        printt("You now know more but can't solve the problem yet")
+        printt("So you searched about your uncle to know more")
+        printt("You  that he had a diary with his research notes")
+        printt("You have now to seek it")
+        diary_func()
+    elif study_more == "no":
+        printt("Now it's time to work on a solution...")
+        printt("You bombarded a strong bomb by mistake")
+        blood -= blood_list3[random.randint(0, 2)]
+        printt(f"You have to take care of the blood, ({blood}) left.")
+        printt("So you searched about your uncle to know more")
+        printt("You  that he had a diary with his research notes")
+        printt("You have now to seek it")
+        diary_func()
+    else:
+        printt("Please answer by Yes or No!")
+                study_more_func()
+
+def studing_func():
+    studying = input(printt("Do you want to study and solve the problem(1) or try to solve it now(2)? "))
+    if studying == "1":
+        printt("You told them that the problem is huge and its solution needs years")
+        printt("They accepted what you say and are pleased you will solve the problem")
+        printt("You studied for 5 years")
+        study_more_func()
+            
+    elif studying == "2":
+        printt("You were not able to solve it and bombed a huge bomb which killed you")
+        blood = -1001
+        printt(f"your blood is {blood}")
+    else:
+        printt("Please answer by (1) or (2)")
+        studing_func()
+
+def l2():
+    global blood
+    printt("Now they are waiting for you to solve the problem...")
+    printt("But you do not know anything about quantum or bombs")
+    studing_func()
+    
+def livesii():
+    global play
+    livesi = input(printt("Do you want to tell them you are not Dr. Livesi(1) or continue as him(2)? ")).lower()
+    if livesi == "1":
+        l1()
+    elif livesi == "2":
+        l2()
+    else:
+        livesii()
+    new_game()
+
+play = True
+blood_list1 = [210, 255, 307]
+blood_list2 = [368, 389, 412]
+blood_list3 = [731, 820, 900]
+
+while play:
+    blood = 1000
+    printt(f"your blood is {blood}")
+    while blood > 0:
+        livesii()
+printt(f"your blood is {blood}")
+printt("You Lost!")
